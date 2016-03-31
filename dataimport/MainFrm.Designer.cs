@@ -67,6 +67,7 @@
             this.txtMaster.Name = "txtMaster";
             this.txtMaster.Size = new System.Drawing.Size(365, 20);
             this.txtMaster.TabIndex = 2;
+            this.txtMaster.TextChanged += new System.EventHandler(this.txtMaster_TextChanged);
             // 
             // btnBrowseMaster
             // 
@@ -94,6 +95,7 @@
             this.txtSource.Name = "txtSource";
             this.txtSource.Size = new System.Drawing.Size(365, 20);
             this.txtSource.TabIndex = 4;
+            this.txtSource.TextChanged += new System.EventHandler(this.txtSource_TextChanged);
             // 
             // cbStyle
             // 
@@ -181,6 +183,7 @@
             this.Controls.Add(this.lstMaster);
             this.Name = "MainFrm";
             this.Text = "Data Import";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainFrm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

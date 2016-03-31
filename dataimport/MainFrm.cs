@@ -27,6 +27,10 @@ namespace dataimport
             InitializeComponent();
             cbStyle.SelectedIndex = 0;
             txtDelimit.Text = ",\t;";
+            if (Properties.Settings.Default.master_filename != "")
+                txtMaster.Text = Properties.Settings.Default.master_filename;
+            if (Properties.Settings.Default.source_filename != "")
+                txtSource.Text = Properties.Settings.Default.source_filename;
         }
 
         private string selectFile()
@@ -43,23 +47,8 @@ namespace dataimport
             if (filename == null)
                 return;
             txtMaster.Text = filename;
-            master_doc = new SLDocument(filename);
-            master_doc.SelectWorksheet("results");
-
-            int i = 1;
-
-            lstMaster.Items.Clear();
-            master.Clear();
-            master_source.Clear();
-            List<int> t2 = new List<int>();
-            while (master_doc.GetCellValueAsString(1, i).Trim() != "")
-            {
-                string st = master_doc.GetCellValueAsString(1, i).Trim();
-                lstMaster.Items.Add(st + " << ");
-                master.Add(st);
-                master_source.Add(-1);
-                i++;
-            }
+            Properties.Settings.Default.master_filename = filename;
+            Properties.Settings.Default.Save();
         }
 
         StreamReader source_reader;
@@ -89,8 +78,8 @@ namespace dataimport
             if (filename == null)
                 return;
             txtSource.Text = filename;
-
-            readSourceFile();
+            Properties.Settings.Default.source_filename = filename;
+            Properties.Settings.Default.Save();
         }
 
         private void lstMaster_SelectedIndexChanged(object sender, EventArgs e)
@@ -116,6 +105,7 @@ namespace dataimport
 
         private void btnImport_Click(object sender, EventArgs e)
         {
+            btnImport.Enabled = false;
             int iRow = 1;
             while (master_doc.GetCellValueAsString(iRow, 1).Trim() != "")
                 iRow++;
@@ -136,6 +126,7 @@ namespace dataimport
                 }
             }
             master_doc.Save();
+            btnImport.Enabled = true;
         }
 
         private void btnSaveTemplate_Click(object sender, EventArgs e)
@@ -159,6 +150,38 @@ namespace dataimport
             if(!File.Exists(default_template_file))
                 return;
             master_source = (List<int>)s.Deserialize(new StreamReader(default_template_file));
+        }
+
+        private void txtMaster_TextChanged(object sender, EventArgs e)
+        {
+            master_doc = new SLDocument(txtMaster.Text);
+            master_doc.SelectWorksheet("results");
+
+            int i = 1;
+
+            lstMaster.Items.Clear();
+            master.Clear();
+            master_source.Clear();
+            List<int> t2 = new List<int>();
+            while (master_doc.GetCellValueAsString(1, i).Trim() != "")
+            {
+                string st = master_doc.GetCellValueAsString(1, i).Trim();
+                lstMaster.Items.Add(st + " << ");
+                master.Add(st);
+                master_source.Add(-1);
+                i++;
+            }
+        }
+
+        private void txtSource_TextChanged(object sender, EventArgs e)
+        {
+            readSourceFile();
+        }
+
+        private void MainFrm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //master_doc.CloseWithoutSaving();
+            
         }
     }
 }

@@ -22,5 +22,29 @@ namespace dataimport.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string master_filename {
+            get {
+                return ((string)(this["master_filename"]));
+            }
+            set {
+                this["master_filename"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string source_filename {
+            get {
+                return ((string)(this["source_filename"]));
+            }
+            set {
+                this["source_filename"] = value;
+            }
+        }
     }
 }
