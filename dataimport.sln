@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "dataimport", "dataimport\dataimport.vbproj", "{676FACF9-016A-43AB-926D-9B149DDDEBE9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dataimport", "dataimport\dataimport.csproj", "{F94A9C37-6CE7-498B-93E8-9788B4E6CA70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{676FACF9-016A-43AB-926D-9B149DDDEBE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{676FACF9-016A-43AB-926D-9B149DDDEBE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{676FACF9-016A-43AB-926D-9B149DDDEBE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{676FACF9-016A-43AB-926D-9B149DDDEBE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F94A9C37-6CE7-498B-93E8-9788B4E6CA70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F94A9C37-6CE7-498B-93E8-9788B4E6CA70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F94A9C37-6CE7-498B-93E8-9788B4E6CA70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F94A9C37-6CE7-498B-93E8-9788B4E6CA70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
